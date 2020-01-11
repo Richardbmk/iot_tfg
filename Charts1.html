@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- AWS SDK  for JS CDN -->
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <!-- ChartJS 2.8 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <!-- JQuery 1.11 CDN -->
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+    <!--    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- GoogleFonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+    <!-- Fontawesome personal kit code -->
+    <script src="https://kit.fontawesome.com/924e924aa8.js" crossorigin="anonymous"></script>
+
+    <!-- CSS Link-->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>IoT Dashboard</title>
+  </head>
+
+  <body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-light">
+    <button class="navbar-toggler ml-auto mb-2 bg-light" type="button" data-toggle="collapse" data-target="#myNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- sidebar -->
+          <div class="col-xl-2 col-lg-3 col-md-4 sidebar fixed-top">
+            <a href="#" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border">IoT Dashboard</a>
+            <div class="bottom-border pb-3">
+              <img src="imgs/photo-1548009813-c6442fa355dc.jpg" width="50" class="rounded-circle mr-3">
+              <a href="#" class="text-white">María Rueda</a>
+            </div>
+            <ul class="navbar-nav flex-column mt-4">
+              <li class="nav-item">
+                <a href="index.html" class="nav-link text-white p-3 mb-2 sidebar-link">
+                  <i class="fas fa-home text-light fa-lg mr-3"></i>
+                  Home
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="Charts.html" class="nav-link text-white p-3 mb-2 sidebar-link current">
+                  <i class="fas fa-chart-bar text-light fa-lg mr-3"></i>
+                  Charts
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- End sidebar -->
+
+          <!-- top-nav -->
+          <div class="col-xl-10 col-lg-9 col-md-8 ml-auto bg-dark fixed-top py-2 top-navbar">
+            <div class="row align-items-center">
+              <div class="col-md-4">
+                <h4 class="text-light text-uppercase mb-0">Dashboard</h4>
+              </div>
+              <div class="col-md-5">
+                <form>
+                  <div class="input-group">
+                    <input type="text" class="form-control search-input" placeholder="Search...">
+                    <button type="button" class="btn btn-white search-button">
+                      <i class="fas fa-search text-danger"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-3">
+                <ul class="navbar-nav">
+                  <li class="nav-item icon-parent">
+                    <a href="#" class="nav-link icon-bullet"><i class="fas fa-comments text-muted fa-lg"></i></a>
+                  </li>
+                  <li class="nav-item icon-parent">
+                    <a href="#" class="nav-link icon-bullet"><i class="fas fa-bell text-muted fa-lg"></i></a>
+                  </li>
+                  <li class="nav-item ml-md-auto">
+                    <a href="#" class="nav-link" data-toggle="modal" data-target="#sign-out"><i class="fas fa-sign-out-alt text-danger fa-lg"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- End sidebar -->
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- End of Navbar -->
+
+  <!-- Modal -->
+  <div class="modal fade text-center" id="sign-out">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Are you sure, you want to live?</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          Press logout to leave
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Stay Here</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Modal -->
+
+
+  <!-- Charts  -->
+  <section>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+          <div class="row pt-md-5 mt-3 mb-1">
+            <div class="col-xl-6 col-md-6 col-sm-6 p-2">
+              <div class="card card-common">
+                <div class="card-header text-secundary">
+                  <span>Temperature</span>
+                </div>
+                <div class="card-body">
+                  <canvas id="temperaturegraph" class="inner cover" width="500" height="320"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-sm-6 p-2">
+              <div class="card card-common">
+                <div class="card-header text-secundary">
+                  <span>Humidity</span>
+                </div>
+                <div class="card-body">
+                  <canvas id="humiditygraph" class="inner cover" width="500" height="320"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End of Charts  -->
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- My Own JS Script -->
+    <script src="./js/script.js"></script>
+
+    <!-- My Own Charts -->
+    <script src="./js/chartOne.js"></script>
+    <script src="./js/Pruebas.js"></script>
+
+  </body>
+</html>
+
