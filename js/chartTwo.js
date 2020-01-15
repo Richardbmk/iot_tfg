@@ -6,8 +6,8 @@ AWS.config.update({
     accessKeyId and secretAccessKey defaults can be used while using the downloadable version of DynamoDB.
     For security reasons, do not store AWS Credentials in your files. Use Amazon Cognito instead.
   */
-  accessKeyId: "AKIAZ3JOYZXEGDTOJE66",
-  secretAccessKey: "2aJucWh73cPCSs+ylgD8pXTJ72L+DARa+Z6orLi/"
+  accessKeyId: "AKIAZ3JOYZXEEURI4S7C",
+  secretAccessKey: "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"
 });
 
 var dynamodb = new AWS.DynamoDB();
@@ -28,6 +28,598 @@ var datumVal = new Date() - 86400000*30;
             ":datum":  datumVal
         }
     };
+
+
+
+
+/*
+RETRIEVING DATA FROM THE DHT22 SENSOR
+*/
+///// 24h Records
+var datumVal24h = new Date() - 86400000;
+
+function scanTime24hd() {
+    document.getElementById('textareadht').innerHTML = "";
+    document.getElementById('textareadht').innerHTML += "Scanning for the sensor data during the last 24 hours." + "\n";
+
+    var params = {
+        TableName: "more_sensortable",
+        KeyConditionExpression: "#id = :iotTopic AND #ts >= :datum",
+        ExpressionAttributeNames: {
+            "#id": "id",
+            "#ts": "timestamp"
+        },
+        ExpressionAttributeValues: {
+            ":iotTopic": "thing02/data",
+            ":datum":  datumVal24h
+        }
+    };
+
+    docClient.query(params, onScan);
+
+    function onScan(err, data) {
+        if (err) {
+            document.getElementById('textareadht').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+            // Print all the data sensor
+            document.getElementById('textareadht').innerHTML += "Scan succeeded: " + "\n";
+            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " | " + "Humedad (HR)" + " | " + "Tiempo";
+            data.Items.forEach(function(sensor) {
+                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " | " + sensor.payload.humidity1 + " | " + sensor.payload.timestamp;
+            });
+        }
+    }
+}
+////////////////
+
+///// Last 3 days Records
+var datumVal3d = new Date() - 86400000*3;
+
+function scanTime3ldd() {
+    document.getElementById('textareadht').innerHTML = "";
+    document.getElementById('textareadht').innerHTML += "Scanning for the sensor data during the last 3 days." + "\n";
+
+    var params = {
+        TableName: "more_sensortable",
+        KeyConditionExpression: "#id = :iotTopic AND #ts >= :datum",
+        ExpressionAttributeNames: {
+            "#id": "id",
+            "#ts": "timestamp"
+        },
+        ExpressionAttributeValues: {
+            ":iotTopic": "thing02/data",
+            ":datum":  datumVal3d
+        }
+    };
+
+    docClient.query(params, onScan);
+
+    function onScan(err, data) {
+        if (err) {
+            document.getElementById('textareadht').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+            // Print all the data sensor
+            document.getElementById('textareadht').innerHTML += "Scan succeeded: " + "\n";
+            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " | " + "Humedad (HR)" + " | " + "Tiempo";
+            data.Items.forEach(function(sensor) {
+                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " | " + sensor.payload.humidity1 + " | " + sensor.payload.timestamp;
+            });
+        }
+    }
+}
+////////////////
+
+///// Last 7 days Records
+var datumVal7d = new Date() - 86400000*7;
+
+function scanTime7ldd() {
+    document.getElementById('textareadht').innerHTML = "";
+    document.getElementById('textareadht').innerHTML += "Scanning for the sensor data during the last 7 days." + "\n";
+
+    var params = {
+        TableName: "more_sensortable",
+        KeyConditionExpression: "#id = :iotTopic AND #ts >= :datum",
+        ExpressionAttributeNames: {
+            "#id": "id",
+            "#ts": "timestamp"
+        },
+        ExpressionAttributeValues: {
+            ":iotTopic": "thing02/data",
+            ":datum":  datumVal7d
+        }
+    };
+
+    docClient.query(params, onScan);
+
+    function onScan(err, data) {
+        if (err) {
+            document.getElementById('textareadht').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+            // Print all the data sensor
+            document.getElementById('textareadht').innerHTML += "Scan succeeded: " + "\n";
+            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " | " + "Humedad (HR)" + " | " + "Tiempo";
+            data.Items.forEach(function(sensor) {
+                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " | " + sensor.payload.humidity1 + " | " + sensor.payload.timestamp;
+            });
+        }
+    }
+}
+////////////////
+
+///// Last 2 weeks
+var datumVal2w = new Date() - 86400000*14;
+
+function scanTime2wd() {
+    document.getElementById('textareadht').innerHTML = "";
+    document.getElementById('textareadht').innerHTML += "Scanning for the sensor data during the last 2 weeks." + "\n";
+
+    var params = {
+        TableName: "more_sensortable",
+        KeyConditionExpression: "#id = :iotTopic AND #ts >= :datum",
+        ExpressionAttributeNames: {
+            "#id": "id",
+            "#ts": "timestamp"
+        },
+        ExpressionAttributeValues: {
+            ":iotTopic": "thing02/data",
+            ":datum":  datumVal2w
+        }
+    };
+
+    docClient.query(params, onScan);
+
+    function onScan(err, data) {
+        if (err) {
+            document.getElementById('textareadht').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+            // Print all the data sensor
+            document.getElementById('textareadht').innerHTML += "Scan succeeded: " + "\n";
+            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " | " + "Humedad (HR)" + " | " + "Tiempo";
+            data.Items.forEach(function(sensor) {
+                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " | " + sensor.payload.humidity1 + " | " + sensor.payload.timestamp;
+            });
+        }
+    }
+}
+////////////////
+
+///// Last 3 weeks
+var datumVal3w = new Date() - 86400000*21;
+
+function scanTime3wd() {
+    document.getElementById('textareadht').innerHTML = "";
+    document.getElementById('textareadht').innerHTML += "Scanning for the sensor data during the last 3 weeks." + "\n";
+
+    var params = {
+        TableName: "more_sensortable",
+        KeyConditionExpression: "#id = :iotTopic AND #ts >= :datum",
+        ExpressionAttributeNames: {
+            "#id": "id",
+            "#ts": "timestamp"
+        },
+        ExpressionAttributeValues: {
+            ":iotTopic": "thing02/data",
+            ":datum":  datumVal3w
+        }
+    };
+
+    docClient.query(params, onScan);
+
+    function onScan(err, data) {
+        if (err) {
+            document.getElementById('textareadht').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+            // Print all the data sensor
+            document.getElementById('textareadht').innerHTML += "Scan succeeded: " + "\n";
+            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " | " + "Humedad (HR)" + " | " + "Tiempo";
+            data.Items.forEach(function(sensor) {
+                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " | " + sensor.payload.humidity1 + " | " + sensor.payload.timestamp;
+            });
+        }
+    }
+}
+////////////////
+
+///// Last Month
+var datumVallm = new Date() - 86400000*31;
+
+function scanTimelmd() {
+    document.getElementById('textareadht').innerHTML = "";
+    document.getElementById('textareadht').innerHTML += "Scanning for the sensor data during the last Month." + "\n";
+
+    var params = {
+        TableName: "more_sensortable",
+        KeyConditionExpression: "#id = :iotTopic AND #ts >= :datum",
+        ExpressionAttributeNames: {
+            "#id": "id",
+            "#ts": "timestamp"
+        },
+        ExpressionAttributeValues: {
+            ":iotTopic": "thing02/data",
+            ":datum":  datumVallm
+        }
+    };
+
+    docClient.query(params, onScan);
+
+    function onScan(err, data) {
+        if (err) {
+            document.getElementById('textareadht').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+            // Print all the data sensor
+            document.getElementById('textareadht').innerHTML += "Scan succeeded: " + "\n";
+            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " | " + "Humedad (HR)" + " | " + "Tiempo";
+            data.Items.forEach(function(sensor) {
+                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " | " + sensor.payload.humidity1 + " | " + sensor.payload.timestamp;
+            });
+        }
+    }
+}
+////////////////
+
+///// All records
+var datumVallr = new Date() - 86400000*365;
+
+function scanTimelrd() {
+    document.getElementById('textareadht').innerHTML = "";
+    document.getElementById('textareadht').innerHTML += "Scanning for the sensor data. All records since today." + "\n";
+
+    var params = {
+        TableName: "more_sensortable",
+        KeyConditionExpression: "#id = :iotTopic AND #ts >= :datum",
+        ExpressionAttributeNames: {
+            "#id": "id",
+            "#ts": "timestamp"
+        },
+        ExpressionAttributeValues: {
+            ":iotTopic": "thing02/data",
+            ":datum":  datumVallr
+        }
+    };
+
+    docClient.query(params, onScan);
+
+    function onScan(err, data) {
+        if (err) {
+            document.getElementById('textareadht').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+            // Print all the data sensor
+            document.getElementById('textareadht').innerHTML += "Scan succeeded: " + "\n";
+            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " | " + "Humedad (HR)" + " | " + "Tiempo";
+            data.Items.forEach(function(sensor) {
+                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " | " + sensor.payload.humidity1 + " | " + sensor.payload.timestamp;
+            });
+        }
+    }
+}
+////////////////
+/*
+END OF RETRIEVING DATA FROM THE DHT22 SENSOR
+*/
+
+
+/*
+RETRIEVING DATA FROM THE BME680 SENSOR
+*/
+///// 24h Records
+var datumVal24hb = new Date() - 86400000;
+
+function scanTime24hb() {
+    document.getElementById('textareabme').innerHTML = "";
+    document.getElementById('textareabme').innerHTML += "Scanning for the sensor data during the last 24 hours." + "\n";
+
+    var params = {
+        TableName: "more_sensortable",
+        KeyConditionExpression: "#id = :iotTopic AND #ts >= :datum",
+        ExpressionAttributeNames: {
+            "#id": "id",
+            "#ts": "timestamp"
+        },
+        ExpressionAttributeValues: {
+            ":iotTopic": "thing02/data",
+            ":datum":  datumVal24hb
+        }
+    };
+
+    docClient.query(params, onScan);
+
+    function onScan(err, data) {
+        if (err) {
+            document.getElementById('textareabme').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+            // Print all the data sensor
+            document.getElementById('textareabme').innerHTML += "Scan succeeded: " + "\n";
+            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + " | " + "Humedad (HR)" + " | " + "Presión (hPa)" + " | "+"Calidad del aire (Ohms)" + " | "+ "Tiempo";
+            data.Items.forEach(function(sensor) {
+                document.getElementById('textareabme').innerHTML += "\n " +
+                 sensor.payload.temperature1 + " | " +
+                 sensor.payload.humidity1 + " | " +
+                 sensor.payload.pressure + " | " +
+                 sensor.payload.airQuality + " | " +
+                 sensor.payload.timestamp;
+            });
+        }
+    }
+}
+////////////////
+
+///// Last 3 days Records
+var datumVal3db = new Date() - 86400000*3;
+
+function scanTime3ldb() {
+    document.getElementById('textareabme').innerHTML = "";
+    document.getElementById('textareabme').innerHTML += "Scanning for the sensor data during the last 3 days." + "\n";
+
+    var params = {
+        TableName: "more_sensortable",
+        KeyConditionExpression: "#id = :iotTopic AND #ts >= :datum",
+        ExpressionAttributeNames: {
+            "#id": "id",
+            "#ts": "timestamp"
+        },
+        ExpressionAttributeValues: {
+            ":iotTopic": "thing02/data",
+            ":datum":  datumVal3db
+        }
+    };
+
+    docClient.query(params, onScan);
+
+    function onScan(err, data) {
+        if (err) {
+            document.getElementById('textareabme').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+            // Print all the data sensor
+            document.getElementById('textareabme').innerHTML += "Scan succeeded: " + "\n";
+            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "|" + "Humedad (HR)" + "|" + "Presión (hPa)" + "|"+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
+            data.Items.forEach(function(sensor) {
+                document.getElementById('textareabme').innerHTML += "\n " +
+                 sensor.payload.temperature1 + "|" +
+                 sensor.payload.humidity1 + "|" +
+                 sensor.payload.pressure + "|" +
+                 sensor.payload.airQuality + "|" +
+                 sensor.payload.timestamp;
+            });
+        }
+    }
+}
+////////////////
+
+///// Last 7 days Records
+var datumVal7b = new Date() - 86400000*7;
+
+function scanTime7ldb() {
+    document.getElementById('textareabme').innerHTML = "";
+    document.getElementById('textareabme').innerHTML += "Scanning for the sensor data during the last 7 days." + "\n";
+
+    var params = {
+        TableName: "more_sensortable",
+        KeyConditionExpression: "#id = :iotTopic AND #ts >= :datum",
+        ExpressionAttributeNames: {
+            "#id": "id",
+            "#ts": "timestamp"
+        },
+        ExpressionAttributeValues: {
+            ":iotTopic": "thing02/data",
+            ":datum":  datumVal7b
+        }
+    };
+
+    docClient.query(params, onScan);
+
+    function onScan(err, data) {
+        if (err) {
+            document.getElementById('textareabme').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+            // Print all the data sensor
+            document.getElementById('textareabme').innerHTML += "Scan succeeded: " + "\n";
+            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "|" + "Humedad (HR)" + "|" + "Presión (hPa)" + "|"+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
+            data.Items.forEach(function(sensor) {
+                document.getElementById('textareabme').innerHTML += "\n " +
+                 sensor.payload.temperature1 + "|" +
+                 sensor.payload.humidity1 + "|" +
+                 sensor.payload.pressure + "|" +
+                 sensor.payload.airQuality + "|" +
+                 sensor.payload.timestamp;
+            });
+        }
+    }
+}
+////////////////
+
+///// Last 2 weeks
+var datumVal2wb = new Date() - 86400000*14;
+
+function scanTime2wb() {
+    document.getElementById('textareabme').innerHTML = "";
+    document.getElementById('textareabme').innerHTML += "Scanning for the sensor data during the last 2 weeks." + "\n";
+
+    var params = {
+        TableName: "more_sensortable",
+        KeyConditionExpression: "#id = :iotTopic AND #ts >= :datum",
+        ExpressionAttributeNames: {
+            "#id": "id",
+            "#ts": "timestamp"
+        },
+        ExpressionAttributeValues: {
+            ":iotTopic": "thing02/data",
+            ":datum":  datumVal2wb
+        }
+    };
+
+    docClient.query(params, onScan);
+
+    function onScan(err, data) {
+        if (err) {
+            document.getElementById('textareabme').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+            // Print all the data sensor
+            document.getElementById('textareabme').innerHTML += "Scan succeeded: " + "\n";
+            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "|" + "Humedad (HR)" + "|" + "Presión (hPa)" + "|"+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
+            data.Items.forEach(function(sensor) {
+                document.getElementById('textareabme').innerHTML += "\n " +
+                 sensor.payload.temperature1 + "|" +
+                 sensor.payload.humidity1 + "|" +
+                 sensor.payload.pressure + "|" +
+                 sensor.payload.airQuality + "|" +
+                 sensor.payload.timestamp;
+            });
+        }
+    }
+}
+////////////////
+
+///// Last 3 weeks
+var datumVal3wb = new Date() - 86400000*21;
+
+function scanTime3wb() {
+    document.getElementById('textareabme').innerHTML = "";
+    document.getElementById('textareabme').innerHTML += "Scanning for the sensor data during the last 3 weeks." + "\n";
+
+    var params = {
+        TableName: "more_sensortable",
+        KeyConditionExpression: "#id = :iotTopic AND #ts >= :datum",
+        ExpressionAttributeNames: {
+            "#id": "id",
+            "#ts": "timestamp"
+        },
+        ExpressionAttributeValues: {
+            ":iotTopic": "thing02/data",
+            ":datum":  datumVal3wb
+        }
+    };
+
+    docClient.query(params, onScan);
+
+    function onScan(err, data) {
+        if (err) {
+            document.getElementById('textareabme').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+            // Print all the data sensor
+            document.getElementById('textareabme').innerHTML += "Scan succeeded: " + "\n";
+            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "|" + "Humedad (HR)" + "|" + "Presión (hPa)" + "|"+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
+            data.Items.forEach(function(sensor) {
+                document.getElementById('textareabme').innerHTML += "\n " +
+                 sensor.payload.temperature1 + "|" +
+                 sensor.payload.humidity1 + "|" +
+                 sensor.payload.pressure + "|" +
+                 sensor.payload.airQuality + "|" +
+                 sensor.payload.timestamp;
+            });
+        }
+    }
+}
+////////////////
+
+///// Last Month
+var datumVallmb = new Date() - 86400000*31;
+
+function scanTimelmb() {
+    document.getElementById('textareabme').innerHTML = "";
+    document.getElementById('textareabme').innerHTML += "Scanning for the sensor data during the last Month." + "\n";
+
+    var params = {
+        TableName: "more_sensortable",
+        KeyConditionExpression: "#id = :iotTopic AND #ts >= :datum",
+        ExpressionAttributeNames: {
+            "#id": "id",
+            "#ts": "timestamp"
+        },
+        ExpressionAttributeValues: {
+            ":iotTopic": "thing02/data",
+            ":datum":  datumVallmb
+        }
+    };
+
+    docClient.query(params, onScan);
+
+    function onScan(err, data) {
+        if (err) {
+            document.getElementById('textareabme').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+            // Print all the data sensor
+            document.getElementById('textareabme').innerHTML += "Scan succeeded: " + "\n";
+            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "|" + "Humedad (HR)" + "|" + "Presión (hPa)" + "|"+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
+            data.Items.forEach(function(sensor) {
+                document.getElementById('textareabme').innerHTML += "\n " +
+                 sensor.payload.temperature1 + "|" +
+                 sensor.payload.humidity1 + "|" +
+                 sensor.payload.pressure + "|" +
+                 sensor.payload.airQuality + "|" +
+                 sensor.payload.timestamp;
+            });
+        }
+    }
+}
+////////////////
+
+///// All records
+var datumVallrb = new Date() - 86400000*365;
+
+function scanTimelrb() {
+    document.getElementById('textareabme').innerHTML = "";
+    document.getElementById('textareabme').innerHTML += "Scanning for the sensor data. All records since today." + "\n";
+
+    var params = {
+        TableName: "more_sensortable",
+        KeyConditionExpression: "#id = :iotTopic AND #ts >= :datum",
+        ExpressionAttributeNames: {
+            "#id": "id",
+            "#ts": "timestamp"
+        },
+        ExpressionAttributeValues: {
+            ":iotTopic": "thing02/data",
+            ":datum":  datumVallrb
+        }
+    };
+
+    docClient.query(params, onScan);
+
+    function onScan(err, data) {
+        if (err) {
+            document.getElementById('textareabme').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+            // Print all the data sensor
+            document.getElementById('textareabme').innerHTML += "Scan succeeded: " + "\n";
+            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "|" + "Humedad (HR)" + "|" + "Presión (hPa)" + "|"+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
+            data.Items.forEach(function(sensor) {
+                document.getElementById('textareabme').innerHTML += "\n " +
+                 sensor.payload.temperature1 + "|" +
+                 sensor.payload.humidity1 + "|" +
+                 sensor.payload.pressure + "|" +
+                 sensor.payload.airQuality + "|" +
+                 sensor.payload.timestamp;
+            });
+        }
+    }
+}
+////////////////
+/*
+END OF RETRIEVING DATA FROM THE DHT22 SENSOR
+*/
+
+
+////////////////
+/*
+DOWNLOAD FILE
+*/
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+////////////////
+/*
+END OF DOWNLOAD FILE
+*/
+
 
 
 var tctx1 = $("#temperaturegraph1").get(0).getContext("2d");
