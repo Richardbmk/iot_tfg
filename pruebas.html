@@ -1,20 +1,48 @@
-<script>
-function download(filename, text) {
-  var element = document.createElement('a');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-  element.setAttribute('download', filename);
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TRyint to download a File</title>
+  </head>
 
-  element.style.display = 'none';
-  document.body.appendChild(element);
 
-  element.click();
+  <body>
 
-  document.body.removeChild(element);
-}
+    <label>Filename</label>
+    <input type="text" id="filename" value="hello.txt"/>
+    <br/><br/><br/>
 
-// Start file download.
-download("hello.txt","This is the content of my file :)");
-</script>
+    <textarea id="text-val" rows="4">This will be the content of our example</textarea>
 
-<textarea id="text-val" rows="4">This is the content of my file</textarea><br/>
-<input type="button" id="dwn-btn" value="Download dinamically generated text file"/>
+    <br/>
+
+    <button type="button" id="download.btn">
+        Download dinamically generated text file
+    </button>
+
+  <script>
+      function download(filename, text) {
+        var element = document.createElement('a');
+        element.style.display = 'none';
+        element.setAttribute('href', 'data:text/plain;charset=utf-8, ' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(Element);
+      }
+
+      document.getElementById("download.btn").addEventListener("click", function(){
+        var text = document.getElementById("text-val").value;
+        var filename = document.getElementById("filename").value;
+
+        download(filename, text);
+      }, false);
+  </script>
+
+  </body>
+</html>

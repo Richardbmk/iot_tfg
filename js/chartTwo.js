@@ -63,9 +63,9 @@ function scanTime24hd() {
         } else {
             // Print all the data sensor
             document.getElementById('textareadht').innerHTML += "Scan succeeded: " + "\n";
-            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " | " + "Humedad (HR)" + " | " + "Tiempo";
+            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " , " + "Humedad (HR)" + " , " + "Tiempo";
             data.Items.forEach(function(sensor) {
-                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " | " + sensor.payload.humidity1 + " | " + sensor.payload.timestamp;
+                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " , " + sensor.payload.humidity1 + " , " + sensor.payload.timestamp;
             });
         }
     }
@@ -100,9 +100,9 @@ function scanTime3ldd() {
         } else {
             // Print all the data sensor
             document.getElementById('textareadht').innerHTML += "Scan succeeded: " + "\n";
-            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " | " + "Humedad (HR)" + " | " + "Tiempo";
+            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " , " + "Humedad (HR)" + " , " + "Tiempo";
             data.Items.forEach(function(sensor) {
-                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " | " + sensor.payload.humidity1 + " | " + sensor.payload.timestamp;
+                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " , " + sensor.payload.humidity1 + " , " + sensor.payload.timestamp;
             });
         }
     }
@@ -137,9 +137,9 @@ function scanTime7ldd() {
         } else {
             // Print all the data sensor
             document.getElementById('textareadht').innerHTML += "Scan succeeded: " + "\n";
-            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " | " + "Humedad (HR)" + " | " + "Tiempo";
+            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " , " + "Humedad (HR)" + " , " + "Tiempo";
             data.Items.forEach(function(sensor) {
-                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " | " + sensor.payload.humidity1 + " | " + sensor.payload.timestamp;
+                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " , " + sensor.payload.humidity1 + " , " + sensor.payload.timestamp;
             });
         }
     }
@@ -174,9 +174,9 @@ function scanTime2wd() {
         } else {
             // Print all the data sensor
             document.getElementById('textareadht').innerHTML += "Scan succeeded: " + "\n";
-            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " | " + "Humedad (HR)" + " | " + "Tiempo";
+            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " , " + "Humedad (HR)" + " , " + "Tiempo";
             data.Items.forEach(function(sensor) {
-                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " | " + sensor.payload.humidity1 + " | " + sensor.payload.timestamp;
+                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " , " + sensor.payload.humidity1 + " , " + sensor.payload.timestamp;
             });
         }
     }
@@ -211,9 +211,9 @@ function scanTime3wd() {
         } else {
             // Print all the data sensor
             document.getElementById('textareadht').innerHTML += "Scan succeeded: " + "\n";
-            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " | " + "Humedad (HR)" + " | " + "Tiempo";
+            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " , " + "Humedad (HR)" + " , " + "Tiempo";
             data.Items.forEach(function(sensor) {
-                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " | " + sensor.payload.humidity1 + " | " + sensor.payload.timestamp;
+                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " , " + sensor.payload.humidity1 + " , " + sensor.payload.timestamp;
             });
         }
     }
@@ -248,9 +248,9 @@ function scanTimelmd() {
         } else {
             // Print all the data sensor
             document.getElementById('textareadht').innerHTML += "Scan succeeded: " + "\n";
-            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " | " + "Humedad (HR)" + " | " + "Tiempo";
+            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " , " + "Humedad (HR)" + " , " + "Tiempo";
             data.Items.forEach(function(sensor) {
-                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " | " + sensor.payload.humidity1 + " | " + sensor.payload.timestamp;
+                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " , " + sensor.payload.humidity1 + " , " + sensor.payload.timestamp;
             });
         }
     }
@@ -285,9 +285,9 @@ function scanTimelrd() {
         } else {
             // Print all the data sensor
             document.getElementById('textareadht').innerHTML += "Scan succeeded: " + "\n";
-            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " | " + "Humedad (HR)" + " | " + "Tiempo";
+            document.getElementById('textareadht').innerHTML += "\n" + "Temperatura (ºC) " + " , " + "Humedad (HR)" + " , " + "Tiempo";
             data.Items.forEach(function(sensor) {
-                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " | " + sensor.payload.humidity1 + " | " + sensor.payload.timestamp;
+                document.getElementById('textareadht').innerHTML += "\n " + sensor.payload.temperature1 + " , " + sensor.payload.humidity1 + " , " + sensor.payload.timestamp;
             });
         }
     }
@@ -329,13 +329,13 @@ function scanTime24hb() {
         } else {
             // Print all the data sensor
             document.getElementById('textareabme').innerHTML += "Scan succeeded: " + "\n";
-            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + " | " + "Humedad (HR)" + " | " + "Presión (hPa)" + " | "+"Calidad del aire (Ohms)" + " | "+ "Tiempo";
+            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + " , " + "Humedad (HR)" + " , " + "Presión (hPa)" + " , "+"Calidad del aire (Ohms)" + " , "+ "Tiempo";
             data.Items.forEach(function(sensor) {
                 document.getElementById('textareabme').innerHTML += "\n " +
-                 sensor.payload.temperature1 + " | " +
-                 sensor.payload.humidity1 + " | " +
-                 sensor.payload.pressure + " | " +
-                 sensor.payload.airQuality + " | " +
+                 sensor.payload.temperature1 + " , " +
+                 sensor.payload.humidity1 + " , " +
+                 sensor.payload.pressure + " , " +
+                 sensor.payload.airQuality + " , " +
                  sensor.payload.timestamp;
             });
         }
@@ -371,13 +371,13 @@ function scanTime3ldb() {
         } else {
             // Print all the data sensor
             document.getElementById('textareabme').innerHTML += "Scan succeeded: " + "\n";
-            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "|" + "Humedad (HR)" + "|" + "Presión (hPa)" + "|"+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
+            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "," + "Humedad (HR)" + "," + "Presión (hPa)" + ","+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
             data.Items.forEach(function(sensor) {
                 document.getElementById('textareabme').innerHTML += "\n " +
-                 sensor.payload.temperature1 + "|" +
-                 sensor.payload.humidity1 + "|" +
-                 sensor.payload.pressure + "|" +
-                 sensor.payload.airQuality + "|" +
+                 sensor.payload.temperature1 + "," +
+                 sensor.payload.humidity1 + "," +
+                 sensor.payload.pressure + "," +
+                 sensor.payload.airQuality + "," +
                  sensor.payload.timestamp;
             });
         }
@@ -413,13 +413,13 @@ function scanTime7ldb() {
         } else {
             // Print all the data sensor
             document.getElementById('textareabme').innerHTML += "Scan succeeded: " + "\n";
-            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "|" + "Humedad (HR)" + "|" + "Presión (hPa)" + "|"+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
+            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "," + "Humedad (HR)" + "," + "Presión (hPa)" + ","+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
             data.Items.forEach(function(sensor) {
                 document.getElementById('textareabme').innerHTML += "\n " +
-                 sensor.payload.temperature1 + "|" +
-                 sensor.payload.humidity1 + "|" +
-                 sensor.payload.pressure + "|" +
-                 sensor.payload.airQuality + "|" +
+                 sensor.payload.temperature1 + "," +
+                 sensor.payload.humidity1 + "," +
+                 sensor.payload.pressure + "," +
+                 sensor.payload.airQuality + "," +
                  sensor.payload.timestamp;
             });
         }
@@ -455,13 +455,13 @@ function scanTime2wb() {
         } else {
             // Print all the data sensor
             document.getElementById('textareabme').innerHTML += "Scan succeeded: " + "\n";
-            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "|" + "Humedad (HR)" + "|" + "Presión (hPa)" + "|"+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
+            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "," + "Humedad (HR)" + "," + "Presión (hPa)" + ","+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
             data.Items.forEach(function(sensor) {
                 document.getElementById('textareabme').innerHTML += "\n " +
-                 sensor.payload.temperature1 + "|" +
-                 sensor.payload.humidity1 + "|" +
-                 sensor.payload.pressure + "|" +
-                 sensor.payload.airQuality + "|" +
+                 sensor.payload.temperature1 + "," +
+                 sensor.payload.humidity1 + "," +
+                 sensor.payload.pressure + "," +
+                 sensor.payload.airQuality + "," +
                  sensor.payload.timestamp;
             });
         }
@@ -497,13 +497,13 @@ function scanTime3wb() {
         } else {
             // Print all the data sensor
             document.getElementById('textareabme').innerHTML += "Scan succeeded: " + "\n";
-            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "|" + "Humedad (HR)" + "|" + "Presión (hPa)" + "|"+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
+            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "," + "Humedad (HR)" + "," + "Presión (hPa)" + ","+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
             data.Items.forEach(function(sensor) {
                 document.getElementById('textareabme').innerHTML += "\n " +
-                 sensor.payload.temperature1 + "|" +
-                 sensor.payload.humidity1 + "|" +
-                 sensor.payload.pressure + "|" +
-                 sensor.payload.airQuality + "|" +
+                 sensor.payload.temperature1 + "," +
+                 sensor.payload.humidity1 + "," +
+                 sensor.payload.pressure + "," +
+                 sensor.payload.airQuality + "," +
                  sensor.payload.timestamp;
             });
         }
@@ -539,13 +539,13 @@ function scanTimelmb() {
         } else {
             // Print all the data sensor
             document.getElementById('textareabme').innerHTML += "Scan succeeded: " + "\n";
-            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "|" + "Humedad (HR)" + "|" + "Presión (hPa)" + "|"+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
+            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "," + "Humedad (HR)" + "," + "Presión (hPa)" + ","+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
             data.Items.forEach(function(sensor) {
                 document.getElementById('textareabme').innerHTML += "\n " +
-                 sensor.payload.temperature1 + "|" +
-                 sensor.payload.humidity1 + "|" +
-                 sensor.payload.pressure + "|" +
-                 sensor.payload.airQuality + "|" +
+                 sensor.payload.temperature1 + "," +
+                 sensor.payload.humidity1 + "," +
+                 sensor.payload.pressure + "," +
+                 sensor.payload.airQuality + "," +
                  sensor.payload.timestamp;
             });
         }
@@ -581,13 +581,13 @@ function scanTimelrb() {
         } else {
             // Print all the data sensor
             document.getElementById('textareabme').innerHTML += "Scan succeeded: " + "\n";
-            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "|" + "Humedad (HR)" + "|" + "Presión (hPa)" + "|"+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
+            document.getElementById('textareabme').innerHTML += "\n" + "Temperatura (ºC) " + "," + "Humedad (HR)" + "," + "Presión (hPa)" + ","+"Calidad del aire (Ohms)" + "                        "+ "     Tiempo";
             data.Items.forEach(function(sensor) {
                 document.getElementById('textareabme').innerHTML += "\n " +
-                 sensor.payload.temperature1 + "|" +
-                 sensor.payload.humidity1 + "|" +
-                 sensor.payload.pressure + "|" +
-                 sensor.payload.airQuality + "|" +
+                 sensor.payload.temperature1 + "," +
+                 sensor.payload.humidity1 + "," +
+                 sensor.payload.pressure + "," +
+                 sensor.payload.airQuality + "," +
                  sensor.payload.timestamp;
             });
         }
@@ -596,28 +596,6 @@ function scanTimelrb() {
 ////////////////
 /*
 END OF RETRIEVING DATA FROM THE DHT22 SENSOR
-*/
-
-
-////////////////
-/*
-DOWNLOAD FILE
-*/
-function download(filename, text) {
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
-
-    element.style.display = 'none';
-    document.body.appendChild(element);
-
-    element.click();
-
-    document.body.removeChild(element);
-}
-////////////////
-/*
-END OF DOWNLOAD FILE
 */
 
 
