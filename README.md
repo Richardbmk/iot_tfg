@@ -1,4 +1,4 @@
-![Dashboard](webindex.jpg)
+![](Arquitectura_definitiva.jpg)
 
 # TRABAJO DE FINAL DE CARRERA
 A trevés de aquí se puede ver el código utilizado para implementar la parte experimental de trabajo de final de carrera.
